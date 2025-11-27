@@ -2,10 +2,12 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <title>FIT STUDIO | Сучасна фітнес-студія</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="{% static 'studio/css/style.css' %}">
 </head>
 <body>
@@ -15,11 +17,11 @@
         <div class="logo">FIT<span>STUDIO</span></div>
 
         <nav class="nav" id="nav">
-            <a href="https://example.com/about" target="_blank" class="nav__link">Про нас</a>
-            <a href="https://example.com/programs" target="_blank" class="nav__link">Програми</a>
-            <a href="https://example.com/trainers" target="_blank" class="nav__link">Тренери</a>
-            <a href="https://example.com/prices" target="_blank" class="nav__link">Ціни</a>
-            <a href="https://example.com/register" target="_blank" class="nav__link nav__link--btn">Записатися</a>
+            <a href="#" class="nav__link">Про нас</a>
+            <a href="#" class="nav__link">Програми</a>
+            <a href="#" class="nav__link">Тренери</a>
+            <a href="#" class="nav__link">Ціни</a>
+            <a href="#" class="nav__link nav__link--btn">Записатися</a>
         </nav>
 
         <button class="burger" id="burger">
@@ -35,8 +37,8 @@
             <p>Персональні тренування, групові програми та супровід тренера.</p>
 
             <div class="hero__actions">
-                <a href="https://example.com/register" target="_blank" class="btn btn--primary">Записатися зараз</a>
-                <a href="https://example.com/programs" target="_blank" class="btn btn--ghost">Дивитися програми</a>
+                <a href="#" class="btn btn--primary">Записатися зараз</a>
+                <a href="#" class="btn btn--ghost">Дивитися програми</a>
             </div>
 
             <div class="hero__stats">
@@ -56,7 +58,7 @@
         </div>
 
         <div class="hero__image">
-            <a href="https://example.com/firstvisit" target="_blank" class="hero__card">
+            <a href="#" class="hero__card">
                 <h3>Перший візит — безкоштовно</h3>
                 <p>Оціни атмосферу та тренерів безкоштовно!</p>
                 <ul>
@@ -74,17 +76,17 @@
         <h2 class="section__title">Чому саме FIT STUDIO?</h2>
 
         <div class="grid grid--3">
-            <a href="https://example.com/gym" target="_blank" class="card">
+            <a href="#" class="card">
                 <h3>Сучасний зал</h3>
                 <p>Новітні тренажери та зона функціонального тренінгу.</p>
             </a>
 
-            <a href="https://example.com/personal" target="_blank" class="card">
+            <a href="#" class="card">
                 <h3>Персональний підхід</h3>
                 <p>Індивідуальні програми під твої цілі.</p>
             </a>
 
-            <a href="https://example.com/groups" target="_blank" class="card">
+            <a href="#" class="card">
                 <h3>Групові заняття</h3>
                 <p>HIIT, йога, CrossFit-стиль та авторські класи.</p>
             </a>
@@ -92,155 +94,13 @@
     </div>
 </section>
 
-<section id="programs" class="section section--alt">
-    <div class="container">
-        <h2 class="section__title">Наші програми</h2>
-
-        <div class="grid grid--3">
-            <a href="https://example.com/program1" target="_blank" class="card card--program">
-                <h3>Fat Burn</h3>
-                <p>Інтенсивні тренування для спалювання жиру.</p>
-                <span class="tag">3 рази/тиждень</span>
-            </a>
-
-            <a href="https://example.com/program2" target="_blank" class="card card--program">
-                <h3>Strong Body</h3>
-                <p>Силові тренування для рельєфу та маси.</p>
-                <span class="tag">2–4 рази/тиждень</span>
-            </a>
-
-            <a href="https://example.com/program3" target="_blank" class="card card--program">
-                <h3>Balance</h3>
-                <p>Йога, мобільність та відновлення.</p>
-                <span class="tag">2 рази/тиждень</span>
-            </a>
-        </div>
-    </div>
-</section>
-
-<section id="trainers" class="section">
-    <div class="container">
-        <h2 class="section__title">Наші тренери</h2>
-
-        <div class="grid grid--3">
-            <a href="https://example.com/trainer1" target="_blank" class="card card--trainer">
-                <div class="avatar avatar--1"></div>
-                <h3>Олександр</h3>
-                <p>Силовий тренінг</p>
-            </a>
-
-            <a href="https://example.com/trainer2" target="_blank" class="card card--trainer">
-                <div class="avatar avatar--2"></div>
-                <h3>Марія</h3>
-                <p>Йога, стретчинг</p>
-            </a>
-
-            <a href="https://example.com/trainer3" target="_blank" class="card card--trainer">
-                <div class="avatar avatar--3"></div>
-                <h3>Ігор</h3>
-                <p>HIIT, функціонал</p>
-            </a>
-        </div>
-    </div>
-</section>
-
-<section id="prices" class="section section--alt">
-    <div class="container">
-        <h2 class="section__title">Абонементи</h2>
-
-        <div class="grid grid--3">
-
-            <a href="https://example.com/pass-lite" target="_blank" class="card card--price">
-                <h3>Lite</h3>
-                <p class="price">900 ₴ / місяць</p>
-                <ul>
-                    <li>3 тренування/тиждень</li>
-                    <li>Групові заняття</li>
-                    <li>Базова консультація</li>
-                </ul>
-                <div class="btn btn--outline">Обрати</div>
-            </a>
-
-            <a href="https://example.com/pass-pro" target="_blank" class="card card--price card--price--featured">
-                <h3>Pro</h3>
-                <p class="price">1400 ₴ / місяць</p>
-                <ul>
-                    <li>Необмежені тренування</li>
-                    <li>Групові + персональні</li>
-                    <li>План харчування</li>
-                </ul>
-                <div class="btn btn--primary">Найпопулярніший</div>
-            </a>
-
-            <a href="https://example.com/pass-personal" target="_blank" class="card card--price">
-                <h3>Personal</h3>
-                <p class="price">300 ₴ / тренування</p>
-                <ul>
-                    <li>Індивідуальні заняття</li>
-                    <li>Супровід тренера</li>
-                    <li>Гнучкий графік</li>
-                </ul>
-                <div class="btn btn--outline">Обрати</div>
-            </a>
-
-        </div>
-    </div>
-</section>
-
-<section id="contact" class="section section--contact">
-    <div class="container contact__inner">
-
-        <div class="contact__info">
-            <h2 class="section__title">Запис на тренування</h2>
-            <p>Залиш свої контакти — ми перетелефонуємо.</p>
-
-            <ul class="contact__list">
-                <li>
-                    <a href="https://maps.google.com/?q=Тернопіль" target="_blank">📍 Тернопіль, вул. Прикладна, 10</a>
-                </li>
-                <li>
-                    <a href="tel:+380000000000">📞 +38 (000) 000-00-00</a>
-                </li>
-                <li>
-                    <a href="mailto:info@fitstudio.ua">📧 info@fitstudio.ua</a>
-                </li>
-            </ul>
-        </div>
-
-        <form class="contact__form" id="contactForm">
-            <div class="form__group">
-                <label>Ім’я</label>
-                <input type="text" placeholder="Владислав">
-            </div>
-
-            <div class="form__group">
-                <label>Телефон</label>
-                <input type="text" placeholder="+38 (0__) ___-__-__">
-            </div>
-
-            <div class="form__group">
-                <label>Ціль</label>
-                <select>
-                    <option>Похудіння</option>
-                    <option>Маса</option>
-                    <option>Здоров’я</option>
-                </select>
-            </div>
-
-            <a href="https://example.com/register" target="_blank"
-               class="btn btn--primary btn--full">Відправити заявку</a>
-        </form>
-
-    </div>
-</section>
-
 <footer class="footer">
     <div class="container footer__inner">
         <span>© 2025 FIT STUDIO.</span>
         <span>
-            <a href="https://instagram.com" target="_blank">Instagram</a> |
-            <a href="https://facebook.com" target="_blank">Facebook</a> |
-            <a href="https://tiktok.com" target="_blank">TikTok</a>
+            <a href="#">Instagram</a> |
+            <a href="#">Facebook</a> |
+            <a href="#">TikTok</a>
         </span>
     </div>
 </footer>
@@ -248,4 +108,3 @@
 <script src="{% static 'studio/js/main.js' %}"></script>
 </body>
 </html>
-

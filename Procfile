@@ -1,3 +1,5 @@
-web: gunicorn fitstudio.wsgi:application
+web: gunicorn fitstudio.wsgi
+release: python manage.py collectstatic --noinput
+
 
 
