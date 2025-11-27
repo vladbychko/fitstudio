@@ -1,13 +1,18 @@
 from pathlib import Path
+import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'replace-this-in-production'
-DEBUG = True
+SECRET_KEY = "django-insecure-replace-this"
 
-ALLOWED_HOSTS = ["*"]
+DEBUG = False   # важливо для Render
+
+ALLOWED_HOSTS = ["*"]    # дозволяємо всі хости
 
 
+# -------------------------
+# Installed apps
+# -------------------------
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -15,11 +20,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'studio',
+
+    'studio',   # твій застосунок
 ]
 
+
+# -------------------------
+# Middleware (WhiteNoise)
+# -------------------------
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+
+    # WhiteNoise повинен стояти тут (другим!)
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -30,13 +44,18 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'fitstudio.urls'
 
+
+# -------------------------
+# Templates
+# -------------------------
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [],  # Django шукатиме шаблони всередині apps/templates/
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
@@ -48,48 +67,55 @@ TEMPLATES = [
 WSGI_APPLICATION = 'fitstudio.wsgi.application'
 
 
+# -------------------------
+# DATABASE (default SQLite)
+# -------------------------
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
 
 
+# -------------------------
+# Password validators
+# -------------------------
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
+    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
+    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
+    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
 
-LANGUAGE_CODE = 'uk'
-TIME_ZONE = 'UTC'
+# -------------------------
+# Internationalization
+# -------------------------
+LANGUAGE_CODE = "uk"
+TIME_ZONE = "Europe/Kyiv"
+
 USE_I18N = True
 USE_TZ = True
 
 
-# ---------------- STATIC FILES ----------------
+# -------------------------
+# STATIC FILES + WHITENOISE
+# -------------------------
 
-STATIC_URL = '/static/'
+STATIC_URL = "/static/"
 
-# Where Django looks for static files during development
+# Папка, з якої collectstatic збере файли
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+# Папки, де лежать твої CSS/JS (ручні файли)
 STATICFILES_DIRS = [
-    BASE_DIR / 'static',
+    BASE_DIR / "static",
 ]
 
-# Where static files will be collected by collectstatic for Render
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+# WhiteNoise storage — обовʼязково на Render
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-# ------------------------------------------------
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
