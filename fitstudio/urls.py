@@ -1,7 +1,9 @@
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
+from studio import views     # ← додали
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('studio.urls')),  # ← підключаємо маршрути додатку studio
+    path('', views.index, name='home'),   # ← ГОЛОВНИЙ МАРШРУТ
 ]
+
