@@ -1,0 +1,33 @@
+{% extends 'studio/base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Тренери" %} | FIT STUDIO{% endblock %}
+
+{% block content %}
+<section class="section fade-in">
+    <div class="container">
+        <h1 class="section__title">{% trans "Наші тренери" %}</h1>
+
+        <div class="grid grid--3">
+            {% for t in trainers %}
+                <article class="card card--trainer">
+                    {% if t.photo %}
+                        <div class="avatar" style="background-image:url('{{ t.photo.url }}')"></div>
+                    {% else %}
+                        <div class="avatar avatar--placeholder"></div>
+                    {% endif %}
+                    <h3>{{ t.name }}</h3>
+                    <p class="muted">{{ t.specialty }}</p>
+                    <p>{{ t.short_description }}</p>
+                    <div class="trainer__socials">
+                        {% if t.instagram %}<a href="{{ t.instagram }}" target="_blank">Instagram</a>{% endif %}
+                        {% if t.facebook %}<a href="{{ t.facebook }}" target="_blank">Facebook</a>{% endif %}
+                        {% if t.tiktok %}<a href="{{ t.tiktok }}" target="_blank">TikTok</a>{% endif %}
+                    </div>
+                </article>
+            {% empty %}
+                <p>{% trans "Поки що немає тренерів." %}</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

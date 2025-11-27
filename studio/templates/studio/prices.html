@@ -1,0 +1,54 @@
+{% extends 'studio/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Ціни" %}{% endblock %}
+
+{% block content %}
+
+<section class="section fade-in">
+    <div class="container">
+        <h1 class="section__title">{% trans "Абонементи" %}</h1>
+        <p class="section__subtitle">
+            {% trans "Обери оптимальний варіант для свого графіку та цілей" %}
+        </p>
+
+        <div class="grid grid--3 price-grid">
+
+            <div class="card card--price">
+                <h3>Lite</h3>
+                <p class="price">900 ₴ / {% trans "місяць" %}</p>
+                <ul>
+                    <li>{% trans "3 тренування/тиждень" %}</li>
+                    <li>{% trans "Групові заняття" %}</li>
+                    <li>{% trans "Базова консультація" %}</li>
+                </ul>
+                <a href="{% url 'booking' %}" class="btn btn--outline">{% trans "Обрати" %}</a>
+            </div>
+
+            <div class="card card--price card--price--featured">
+                <h3>Pro</h3>
+                <p class="price">1400 ₴ / {% trans "місяць" %}</p>
+                <ul>
+                    <li>{% trans "Необмежені тренування" %}</li>
+                    <li>{% trans "Групові + персональні" %}</li>
+                    <li>{% trans "План харчування" %}</li>
+                </ul>
+                <a href="{% url 'booking' %}" class="btn btn--primary">{% trans "Найпопулярніший" %}</a>
+            </div>
+
+            <div class="card card--price">
+                <h3>Personal</h3>
+                <p class="price">300 ₴ / {% trans "тренування" %}</p>
+                <ul>
+                    <li>{% trans "Індивідуальні заняття" %}</li>
+                    <li>{% trans "Супровід тренера" %}</li>
+                    <li>{% trans "Гнучкий графік" %}</li>
+                </ul>
+                <a href="{% url 'booking' %}" class="btn btn--outline">{% trans "Обрати" %}</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

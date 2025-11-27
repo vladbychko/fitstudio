@@ -1,0 +1,49 @@
+{% extends 'studio/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Програми" %}{% endblock %}
+
+{% block content %}
+
+<section class="section fade-in">
+    <div class="container">
+        <h1 class="section__title">{% trans "Наші програми тренувань" %}</h1>
+        <p class="section__subtitle">
+            {% trans "Підібрані під різні рівні підготовки та цілі" %}
+        </p>
+
+        <div class="grid grid--3">
+
+            <div class="card card--program">
+                <h3>Fat Burn</h3>
+                <p>{% trans "Інтенсивні тренування для ефективного зниження ваги" %}.</p>
+                <span class="tag">HIIT / Tabata</span>
+            </div>
+
+            <div class="card card--program">
+                <h3>Strong Body</h3>
+                <p>{% trans "Силові тренування для рельєфу, набору маси та витривалості" %}.</p>
+                <span class="tag">{% trans "Силовий блок" %}</span>
+            </div>
+
+            <div class="card card--program">
+                <h3>Balance</h3>
+                <p>{% trans "Мобільність, стретчинг та відновлення" %}.</p>
+                <span class="tag">Yoga / Mobility</span>
+            </div>
+
+        </div>
+
+        <div class="program-info">
+            <h2 class="section__title">{% trans "Як проходять заняття?" %}</h2>
+            <ul class="check-list">
+                <li>{% trans "Професійний тренер на кожному занятті" %}</li>
+                <li>{% trans "Чітко структуровані тренування" %}</li>
+                <li>{% trans "Безпечна техніка" %}</li>
+                <li>{% trans "Різноманітність форматів" %}</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'studio/base.html' %}
+{% load i18n %}
+
+{% block title %}FIT STUDIO — {% trans "Головна" %}{% endblock %}
+
+{% block content %}
+<section class="hero fade-in">
+    <div class="container hero__inner">
+        <div class="hero__content">
+            <h1>{% trans "Сучасна фітнес-студія в центрі міста" %}</h1>
+            <p>{% trans "Персональні тренування, групові програми та супровід тренера." %}</p>
+
+            <div class="hero__actions">
+                <a href="{% url 'booking' %}" class="btn btn--primary">{% trans "Записатися зараз" %}</a>
+                <a href="{% url 'programs' %}" class="btn btn--ghost">{% trans "Дивитися програми" %}</a>
+            </div>
+
+            <div class="hero__stats">
+                <div class="stat"><span>500+</span><small>{% trans "клієнтів" %}</small></div>
+                <div class="stat"><span>20</span><small>{% trans "груп щотижня" %}</small></div>
+                <div class="stat"><span>8</span><small>{% trans "профі-тренерів" %}</small></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section--alt fade-in">
+    <div class="container">
+        <h2 class="section__title">{% trans "Чому саме FIT STUDIO?" %}</h2>
+
+        <div class="grid grid--3">
+            <!-- картки як у тебе раніше -->
+        </div>
+    </div>
+</section>
+
+<section class="section fade-in">
+    <div class="container">
+        <h2 class="section__title">{% trans "Наші тренери" %}</h2>
+
+        <div class="grid grid--3">
+            {% for t in trainers %}
+                <article class="card card--trainer">
+                    {% if t.photo %}
+                        <div class="avatar" style="background-image:url('{{ t.photo.url }}')"></div>
+                    {% else %}
+                        <div class="avatar avatar--placeholder"></div>
+                    {% endif %}
+                    <h3>{{ t.name }}</h3>
+                    <p>{{ t.specialty }}</p>
+                </article>
+            {% empty %}
+                <p>{% trans "Тренери ще не додані." %}</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

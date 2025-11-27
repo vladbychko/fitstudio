@@ -1,10 +1,14 @@
-from django.contrib import admin
 from django.urls import path
-from studio import views
+from . import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.index, name='home'),
+    path('', views.home, name='home'),
+    path('trainers/', views.trainers, name='trainers'),
+    path('prices/', views.prices, name='prices'),
+    path('programs/', views.programs, name='programs'),
+    path('about/', views.about, name='about'),
+    path('booking/', views.booking, name='booking'),
 ]
+
 
 

@@ -1,0 +1,41 @@
+{% extends 'studio/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Запис на тренування" %} | FIT STUDIO{% endblock %}
+
+{% block content %}
+<section class="section section--contact fade-in">
+    <div class="container contact__inner">
+
+        <div class="contact__info">
+            <h1 class="section__title">{% trans "Запис на тренування" %}</h1>
+            <p>{% trans "Залиш свої контакти — ми перетелефонуємо." %}</p>
+        </div>
+
+        <div class="contact__form-wrapper">
+            {% if success %}
+                <div class="alert alert--success">
+                    {% trans "Дякуємо! Заявка відправлена." %}
+                </div>
+            {% endif %}
+
+            <form method="post" class="contact__form">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="form__group">
+                        <label>{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.errors %}
+                            <div class="form__error">{{ field.errors|striptags }}</div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+
+                <button type="submit" class="btn btn--primary btn--full">
+                    {% trans "Відправити заявку" %}
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

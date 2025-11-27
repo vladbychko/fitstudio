@@ -1,0 +1,32 @@
+{% load static i18n %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}FIT STUDIO{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'studio/css/style.css' %}">
+    <script defer src="{% static 'studio/js/main.js' %}"></script>
+</head>
+<body data-theme="dark">
+
+{% include 'studio/navbar.html' %}
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<footer class="footer">
+    <div class="container footer__inner">
+        <span>© 2025 FIT STUDIO.</span>
+        <span>
+            <a href="https://instagram.com" target="_blank">Instagram</a> |
+            <a href="https://facebook.com" target="_blank">Facebook</a> |
+            <a href="https://tiktok.com" target="_blank">TikTok</a>
+        </span>
+    </div>
+</footer>
+
+</body>
+</html>

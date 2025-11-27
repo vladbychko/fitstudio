@@ -1,0 +1,41 @@
+{% extends 'studio/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Про нас" %}{% endblock %}
+
+{% block content %}
+
+<section class="section fade-in">
+    <div class="container about-container">
+
+        <div class="about-text">
+            <h1 class="section__title">{% trans "FIT STUDIO — місце, де створюють здорове тіло та сильний дух" %}</h1>
+
+            <p>
+                {% trans "Ми — сучасна фітнес-студія з професійною командою тренерів, які працюють для твоїх результатів." %}
+            </p>
+
+            <p>
+                {% trans "У нас ти знайдеш комфортну атмосферу, підтримку, індивідуальний підхід і широкий вибір тренувальних програм." %}
+            </p>
+
+            <ul class="check-list">
+                <li>{% trans "Новітнє обладнання" %}</li>
+                <li>{% trans "Чисті роздягальні та душові" %}</li>
+                <li>{% trans "Групові та персональні тренування" %}</li>
+                <li>{% trans "Послуги дієтолога" %}</li>
+            </ul>
+
+            <a href="{% url 'booking' %}" class="btn btn--primary">
+                {% trans "Записатися на тренування" %}
+            </a>
+        </div>
+
+        <div class="about-image">
+            <div class="about-photo"></div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}
