@@ -1,1 +1,2 @@
-web: gunicorn fitstudio.wsgi
+web: gunicorn fitstudio.wsgi:application
+
