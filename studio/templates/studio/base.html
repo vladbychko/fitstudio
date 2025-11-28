@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}FIT STUDIO{% endblock %}</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'studio/css/style.css' %}">
+</head>
+<body data-theme="dark">
+
+<header class="header">
+    <div class="container header__inner">
+
+        <div class="logo">
+            <a href="{% url 'home' %}">FIT <span>STUDIO</span></a>
+        </div>
+
+        <nav class="nav" id="navMenu">
+            <a href="{% url 'home' %}" class="nav__link">Головна</a>
+            <a href="{% url 'about' %}" class="nav__link">Про нас</a>
+            <a href="{% url 'programs' %}" class="nav__link">Програми</a>
+            <a href="{% url 'trainers' %}" class="nav__link">Тренери</a>
+            <a href="{% url 'prices' %}" class="nav__link">Ціни</a>
+            <a href="{% url 'booking' %}" class="nav__link nav__link--btn">Записатися</a>
+        </nav>
+
+        <div class="header__controls">
+            <button id="themeToggle" class="theme-toggle">🌙</button>
+
+            <button id="burgerBtn" class="burger">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+
+    </div>
+</header>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<footer class="footer">
+    <div class="container footer__inner">
+        <span>© 2025 FIT STUDIO</span>
+        <span>
+            <a href="#">Instagram</a> |
+            <a href="#">Facebook</a> |
+            <a href="#">TikTok</a>
+        </span>
+    </div>
+</footer>
+
+<script src="{% static 'studio/js/main.js' %}"></script>
+
+<!-- Scroll animation -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const items = document.querySelectorAll('.reveal');
+
+    const revealOnScroll = () => {
+        const trigger = window.innerHeight * 0.85;
+        items.forEach(box => {
+            const top = box.getBoundingClientRect().top;
+            if (top < trigger) box.classList.add("visible");
+        });
+    };
+
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll();
+});
+</script>
+
+</body>
+</html>

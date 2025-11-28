@@ -1,57 +1,61 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const nav = document.getElementById('nav');
-    const burger = document.getElementById('burger');
-    const contactForm = document.getElementById('contactForm');
-    const formMessage = document.getElementById('formMessage');
+// static/studio/js/main.js
 
-    // Бургер-меню
-    if (burger && nav) {
-        burger.addEventListener('click', () => {
-            nav.classList.toggle('nav--open');
-        });
+document.addEventListener("DOMContentLoaded", () => {
+    /* ===========================
+       THEME TOGGLE
+    ============================ */
+    const body = document.body;
+    const themeToggle = document.getElementById("themeToggle");
 
-        // Закривати меню при кліку на лінк
-        nav.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                nav.classList.remove('nav--open');
-            });
+    // зчитуємо збережену тему (dark / light)
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "light" || savedTheme === "dark") {
+        body.setAttribute("data-theme", savedTheme);
+    }
+
+    function updateThemeIcon() {
+        if (!themeToggle) return;
+        const current = body.getAttribute("data-theme") || "dark";
+        themeToggle.textContent = current === "dark" ? "🌙" : "☀️";
+    }
+
+    updateThemeIcon();
+
+    if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+            const current = body.getAttribute("data-theme") || "dark";
+            const next = current === "dark" ? "light" : "dark";
+            body.setAttribute("data-theme", next);
+            localStorage.setItem("theme", next);
+            updateThemeIcon();
         });
     }
 
-    // Плавний скрол до секцій
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', (e) => {
-            const href = anchor.getAttribute('href');
-            if (!href || href === '#') return;
-            const target = document.querySelector(href);
-            if (!target) return;
+    /* ===========================
+       BURGER MENU
+    ============================ */
+    const burger = document.getElementById("burgerBtn");
+    const navMenu = document.getElementById("navMenu");
 
-            e.preventDefault();
-            window.scrollTo({
-                top: target.offsetTop - 70,
-                behavior: 'smooth'
-            });
+    if (burger && navMenu) {
+        burger.addEventListener("click", () => {
+            burger.classList.toggle("burger--active");
+            navMenu.classList.toggle("nav--open");
+        });
+    }
+
+    /* ===========================
+       SMOOTH SCROLL ДЛЯ ЯКОРІВ
+    ============================ */
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener("click", (e) => {
+            const href = link.getAttribute("href");
+            if (!href || href.length < 2) return;
+            const target = document.getElementById(href.substring(1));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: "smooth" });
+            }
         });
     });
-
-    // Імітація відправки форми (без бекенду)
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            const name = contactForm.querySelector('#name').value.trim();
-            const phone = contactForm.querySelector('#phone').value.trim();
-
-            if (!name || !phone) {
-                formMessage.textContent = 'Будь ласка, заповніть всі обов’язкові поля.';
-                formMessage.style.color = '#ff6b6b';
-                return;
-            }
-
-            formMessage.textContent = 'Дякуємо! Ми зв’яжемося з вами найближчим часом.';
-            formMessage.style.color = '#4ff1c6';
-
-            contactForm.reset();
-        });
-    }
 });

@@ -1,34 +1,7 @@
+{% extends 'studio/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-    <meta charset="UTF-8">
-    <title>FIT STUDIO | Сучасна фітнес-студія</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="{% static 'studio/css/style.css' %}">
-</head>
-<body>
-
-<header class="header">
-    <div class="container header__inner">
-        <div class="logo">FIT<span>STUDIO</span></div>
-
-        <nav class="nav" id="nav">
-            <a href="#" class="nav__link">Про нас</a>
-            <a href="#" class="nav__link">Програми</a>
-            <a href="#" class="nav__link">Тренери</a>
-            <a href="#" class="nav__link">Ціни</a>
-            <a href="#" class="nav__link nav__link--btn">Записатися</a>
-        </nav>
-
-        <button class="burger" id="burger">
-            <span></span><span></span><span></span>
-        </button>
-    </div>
-</header>
+{% block content %}
 
 <section class="hero">
     <div class="container hero__inner">
@@ -37,8 +10,8 @@
             <p>Персональні тренування, групові програми та супровід тренера.</p>
 
             <div class="hero__actions">
-                <a href="#" class="btn btn--primary">Записатися зараз</a>
-                <a href="#" class="btn btn--ghost">Дивитися програми</a>
+                <a href="{% url 'booking' %}" class="btn btn--primary">Записатися зараз</a>
+                <a href="{% url 'programs' %}" class="btn btn--ghost">Дивитися програми</a>
             </div>
 
             <div class="hero__stats">
@@ -58,7 +31,7 @@
         </div>
 
         <div class="hero__image">
-            <a href="#" class="hero__card">
+            <div class="hero__card">
                 <h3>Перший візит — безкоштовно</h3>
                 <p>Оціни атмосферу та тренерів безкоштовно!</p>
                 <ul>
@@ -66,7 +39,7 @@
                     <li>Силові тренування</li>
                     <li>Stretch & Mobility</li>
                 </ul>
-            </a>
+            </div>
         </div>
     </div>
 </section>
@@ -76,35 +49,22 @@
         <h2 class="section__title">Чому саме FIT STUDIO?</h2>
 
         <div class="grid grid--3">
-            <a href="#" class="card">
+            <div class="card">
                 <h3>Сучасний зал</h3>
                 <p>Новітні тренажери та зона функціонального тренінгу.</p>
-            </a>
+            </div>
 
-            <a href="#" class="card">
+            <div class="card">
                 <h3>Персональний підхід</h3>
                 <p>Індивідуальні програми під твої цілі.</p>
-            </a>
+            </div>
 
-            <a href="#" class="card">
+            <div class="card">
                 <h3>Групові заняття</h3>
                 <p>HIIT, йога, CrossFit-стиль та авторські класи.</p>
-            </a>
+            </div>
         </div>
     </div>
 </section>
 
-<footer class="footer">
-    <div class="container footer__inner">
-        <span>© 2025 FIT STUDIO.</span>
-        <span>
-            <a href="#">Instagram</a> |
-            <a href="#">Facebook</a> |
-            <a href="#">TikTok</a>
-        </span>
-    </div>
-</footer>
-
-<script src="{% static 'studio/js/main.js' %}"></script>
-</body>
-</html>
+{% endblock %}

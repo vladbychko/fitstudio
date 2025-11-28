@@ -1,4 +1,6 @@
-// ----- Бургер -----
+// ==========================
+//  Бургер-меню
+// ==========================
 const burger = document.getElementById('burgerBtn');
 const nav = document.getElementById('navMenu');
 
@@ -9,22 +11,31 @@ if (burger && nav) {
     });
 }
 
-// ----- Плавний скрол для внутрішніх якорів -----
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+// ==========================
+//  Плавний скрол ТІЛЬКИ для внутрішніх якорів
+//  (посилання з href="#id")
+// ==========================
+document.querySelectorAll('a.scroll-link').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
-        if (href.length > 1) {
-            e.preventDefault();
-            const id = href.substring(1);
-            const target = document.getElementById(id);
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth' });
-            }
+
+        // Ігнорувати випадки типу href="#" або порожніх
+        if (!href || href === "#" || !href.startsWith('#')) return;
+
+        e.preventDefault();
+
+        const id = href.substring(1);
+        const target = document.getElementById(id);
+
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
         }
     });
 });
 
-// ----- Перемикач теми (dark / light) -----
+// ==========================
+//  Перемикач теми (dark / light)
+// ==========================
 const themeToggle = document.getElementById('themeToggle');
 const body = document.body;
 
@@ -35,9 +46,11 @@ function applyTheme(theme) {
     }
 }
 
+// Завантажуємо тему з localStorage
 const savedTheme = localStorage.getItem('theme') || 'dark';
 applyTheme(savedTheme);
 
+// Перемикач
 if (themeToggle) {
     themeToggle.addEventListener('click', () => {
         const newTheme = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
