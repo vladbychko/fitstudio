@@ -8,8 +8,7 @@ from .models import Trainer
 from .forms import BookingForm
 
 
-def home(request):
-    # можна вивести 3 тренери на головній
+def index(request):
     trainers = Trainer.objects.filter(is_active=True)[:3]
     return render(request, 'studio/index.html', {'trainers': trainers})
 
